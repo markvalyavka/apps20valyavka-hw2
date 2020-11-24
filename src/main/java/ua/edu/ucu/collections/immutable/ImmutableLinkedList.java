@@ -117,10 +117,8 @@ public class ImmutableLinkedList implements ImmutableList {
     @Override
     public ImmutableList clear() {
         Object[] newArray = new Object[size];
-        Object[] newUnderlyingArray = new Object[size];
-        System.arraycopy(newArray, 0, newUnderlyingArray, 0, size);
-        Arrays.fill(newUnderlyingArray, null);
-        return new ImmutableLinkedList(newUnderlyingArray);
+        Arrays.fill(newArray, null);
+        return new ImmutableLinkedList(newArray);
     }
 
     @Override

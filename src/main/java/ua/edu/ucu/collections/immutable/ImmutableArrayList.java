@@ -4,19 +4,14 @@ import java.util.Arrays;
 
 public class ImmutableArrayList implements ImmutableList {
 
-    private Object[] underlyingArray;
-    private int capacity;
-    private int size;
+    private final Object[] underlyingArray;
+    private final int capacity;
+    private final int size;
 
     public ImmutableArrayList() {
         underlyingArray = new Object[1];
         size = 0;
         capacity = 1;
-    }
-
-    public ImmutableArrayList(Object[] newUnderlyingArray) {
-        underlyingArray = newUnderlyingArray;
-        capacity = size = newUnderlyingArray.length;
     }
 
     public ImmutableArrayList(Object[] newUnderlyingArray, int newCapacity, int newSize) {
