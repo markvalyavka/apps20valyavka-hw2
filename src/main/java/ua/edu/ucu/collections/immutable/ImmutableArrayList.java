@@ -22,7 +22,7 @@ public class ImmutableArrayList implements ImmutableList {
 
     private Object[] resizeAndCopyArray() {
 
-        Object[] newUnderlyingArray = new Object[capacity*2];
+        Object[] newUnderlyingArray = new Object[capacity * 2];
         System.arraycopy(underlyingArray, 0, newUnderlyingArray, 0, size);
         return newUnderlyingArray;
     }
@@ -61,11 +61,12 @@ public class ImmutableArrayList implements ImmutableList {
             return new ImmutableArrayList(newUnderlyingArray, newCapacity, newSize);
         } else {
             Object[] newUnderlyingArray = new Object[capacity];
-            System.arraycopy(underlyingArray, index, newUnderlyingArray, index+1, size - index);
+            System.arraycopy(underlyingArray, index, newUnderlyingArray, index + 1, size - index);
             newUnderlyingArray[index] = e;
             return new ImmutableArrayList(newUnderlyingArray, capacity, newSize);
         }
     }
+
     @Override
     public ImmutableList addAll(Object[] c) {
         Object[] newUnderlyingArray = new Object[size + c.length];
@@ -93,10 +94,10 @@ public class ImmutableArrayList implements ImmutableList {
     @Override
     public ImmutableList remove(int index) {
         checkBounds(index);
-        Object[] newUnderlyingArray = new Object[size-1];
+        Object[] newUnderlyingArray = new Object[size - 1];
         System.arraycopy(underlyingArray, 0, newUnderlyingArray, 0, index);
-        System.arraycopy(underlyingArray, index+1, newUnderlyingArray, index, size-index-1);
-        return new ImmutableArrayList(newUnderlyingArray, size-1, size-1);
+        System.arraycopy(underlyingArray, index + 1, newUnderlyingArray, index, size - index - 1);
+        return new ImmutableArrayList(newUnderlyingArray, size - 1, size - 1);
     }
 
     @Override
@@ -145,7 +146,7 @@ public class ImmutableArrayList implements ImmutableList {
 
     @Override
     public String toString() {
-        return "ImmutableArrayList("+ Arrays.toString(underlyingArray) + ", size = " +
+        return "ImmutableArrayList(" + Arrays.toString(underlyingArray) + ", size = " +
                 size + ", capacity = " + capacity + ")";
     }
 }

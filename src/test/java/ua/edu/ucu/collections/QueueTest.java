@@ -1,10 +1,11 @@
 package ua.edu.ucu.collections;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class QueueTest {
-    
+
     @Test
     public void testEmptyQueueConstructor() {
         Queue queue = new Queue();
@@ -37,5 +38,5 @@ public class QueueTest {
         assertEquals(1, dequeued);
         assertEquals("Queue([3, 8])", queue.toString());
     }
-    
+
 }

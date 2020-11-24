@@ -1,6 +1,7 @@
 package ua.edu.ucu.collections.immutable;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class ImmutableLinkedListTest {
@@ -123,5 +124,5 @@ public class ImmutableLinkedListTest {
         ImmutableLinkedList arr2 = arr.removeLast();
         assertEquals("ImmutableLinkedList([2, 3, 7, 9])", arr2.toString());
     }
-    
+
 }

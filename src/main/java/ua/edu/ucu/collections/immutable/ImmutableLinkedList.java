@@ -6,24 +6,26 @@ public class ImmutableLinkedList implements ImmutableList {
 
     private Node head;
     private Node tail;
-    int size;
+    private int size;
 
     public ImmutableLinkedList(Object[] arr) {
 
         // Array to doubly linked list
         size = arr.length;
         if (arr.length == 0) {
-            tail = head = null;
+            tail = null;
+            head = null;
         } else if (arr.length == 1) {
             head = new Node(arr[0]);
-            head.next = head.prev = null;
+            head.next = null;
+            head.prev = null;
         } else {
             head = new Node(arr[0]);
             head.prev = null;
             tail = new Node(arr[arr.length - 1]);
             tail.next = null;
             Node prev = head;
-            for(int i = 1; i < size-1; i++) {
+            for (int i = 1; i < size - 1; i++) {
                 Node newNode = new Node(arr[i]);
                 newNode.prev = prev;
                 prev.next = newNode;
@@ -82,9 +84,9 @@ public class ImmutableLinkedList implements ImmutableList {
     public ImmutableList remove(int index) {
         checkBounds(index);
         Object[] currArray = toArray();
-        Object[] newArray = new Object[size-1];
+        Object[] newArray = new Object[size - 1];
         System.arraycopy(currArray, 0, newArray, 0, index);
-        System.arraycopy(currArray, index+1, newArray, index, size-index-1);
+        System.arraycopy(currArray, index + 1, newArray, index, size - index - 1);
         return new ImmutableLinkedList(newArray);
     }
 
@@ -152,7 +154,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     public ImmutableLinkedList removeLast() {
-        return (ImmutableLinkedList) remove(size-1);
+        return (ImmutableLinkedList) remove(size - 1);
     }
 
     public Object getFirst() {

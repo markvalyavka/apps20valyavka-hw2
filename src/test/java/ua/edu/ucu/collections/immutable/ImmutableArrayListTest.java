@@ -7,7 +7,7 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 
 public class ImmutableArrayListTest {
-    
+
     @Test
     public void testImmutability() {
         ImmutableList arr = new ImmutableArrayList();
@@ -31,7 +31,7 @@ public class ImmutableArrayListTest {
     @Test
     public void testAddAtIndex() {
         ImmutableList arr = new ImmutableArrayList();
-        ImmutableList arr2 = arr.add(10).add(0,-10);
+        ImmutableList arr2 = arr.add(10).add(0, -10);
         assertEquals("ImmutableArrayList([-10, 10], size = 2, capacity = 2)", arr2.toString());
     }
 
@@ -126,7 +126,4 @@ public class ImmutableArrayListTest {
     }
 
 
-
-
-    
 }
