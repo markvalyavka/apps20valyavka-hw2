@@ -1,11 +1,12 @@
 package ua.edu.ucu.collections;
 
 import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
-import ua.edu.ucu.collections.immutable.ImmutableList;
+
+import java.util.Arrays;
 
 public class Queue {
 
-    private ImmutableList underlyingArray;
+    private ImmutableLinkedList underlyingArray;
 
     public Queue() {
         underlyingArray = new ImmutableLinkedList(new Object[]{});
@@ -16,13 +17,23 @@ public class Queue {
     }
 
     public void enqueue(Object e) {
-        underlyingArray = underlyingArray.add(underlyingArray.size(), e);
+        underlyingArray = underlyingArray.addLast(e);
     }
 
     public Object dequeue() {
-        Object dequeued = underlyingArray.get(0);
-        underlyingArray = underlyingArray.remove(0);
+        Object dequeued = underlyingArray.getFirst();
+        underlyingArray = underlyingArray.removeFirst();
         return dequeued;
     }
-    
+
+    public Object peek() {
+        return underlyingArray.getFirst();
+    }
+
+    @Override
+    public String toString() {
+        return "Queue(" + Arrays.toString(underlyingArray.toArray()) + ")";
+    }
+
 }
+
