@@ -14,7 +14,8 @@ public class ImmutableArrayList implements ImmutableList {
         capacity = 1;
     }
 
-    public ImmutableArrayList(Object[] newUnderlyingArray, int newCapacity, int newSize) {
+    public ImmutableArrayList(Object[] newUnderlyingArray,
+                              int newCapacity, int newSize) {
         underlyingArray = newUnderlyingArray;
         size = newSize;
         capacity = newCapacity;
@@ -34,12 +35,14 @@ public class ImmutableArrayList implements ImmutableList {
             int newCapacity = capacity * 2;
             Object[] newUnderlyingArray = resizeAndCopyArray();
             newUnderlyingArray[size] = e;
-            return new ImmutableArrayList(newUnderlyingArray, newCapacity, newSize);
+            return new ImmutableArrayList(newUnderlyingArray,
+                    newCapacity, newSize);
         } else {
             Object[] newUnderlyingArray = new Object[capacity];
             System.arraycopy(underlyingArray, 0, newUnderlyingArray, 0, size);
             newUnderlyingArray[size] = e;
-            return new ImmutableArrayList(newUnderlyingArray, capacity, newSize);
+            return new ImmutableArrayList(newUnderlyingArray,
+                    capacity, newSize);
         }
     }
 
@@ -56,14 +59,18 @@ public class ImmutableArrayList implements ImmutableList {
         if (size == capacity) {
             int newCapacity = capacity * 2;
             Object[] newUnderlyingArray = resizeAndCopyArray();
-            System.arraycopy(newUnderlyingArray, index, newUnderlyingArray, index + 1, size - index);
+            System.arraycopy(newUnderlyingArray, index, newUnderlyingArray,
+                    index + 1, size - index);
             newUnderlyingArray[index] = e;
-            return new ImmutableArrayList(newUnderlyingArray, newCapacity, newSize);
+            return new ImmutableArrayList(newUnderlyingArray,
+                    newCapacity, newSize);
         } else {
             Object[] newUnderlyingArray = new Object[capacity];
-            System.arraycopy(underlyingArray, index, newUnderlyingArray, index + 1, size - index);
+            System.arraycopy(underlyingArray, index, newUnderlyingArray,
+                    index + 1, size - index);
             newUnderlyingArray[index] = e;
-            return new ImmutableArrayList(newUnderlyingArray, capacity, newSize);
+            return new ImmutableArrayList(newUnderlyingArray,
+                    capacity, newSize);
         }
     }
 
@@ -72,7 +79,8 @@ public class ImmutableArrayList implements ImmutableList {
         Object[] newUnderlyingArray = new Object[size + c.length];
         System.arraycopy(underlyingArray, 0, newUnderlyingArray, 0, size);
         System.arraycopy(c, 0, newUnderlyingArray, size, c.length);
-        return new ImmutableArrayList(newUnderlyingArray, size + c.length, size + c.length);
+        return new ImmutableArrayList(newUnderlyingArray,
+                size + c.length, size + c.length);
     }
 
     @Override
@@ -81,8 +89,10 @@ public class ImmutableArrayList implements ImmutableList {
         Object[] newUnderlyingArray = new Object[size + c.length];
         System.arraycopy(underlyingArray, 0, newUnderlyingArray, 0, index);
         System.arraycopy(c, 0, newUnderlyingArray, index, c.length);
-        System.arraycopy(underlyingArray, index, newUnderlyingArray, index + c.length, size - index);
-        return new ImmutableArrayList(newUnderlyingArray, size + c.length, size + c.length);
+        System.arraycopy(underlyingArray, index, newUnderlyingArray,
+                index + c.length, size - index);
+        return new ImmutableArrayList(newUnderlyingArray,
+                size + c.length, size + c.length);
     }
 
     @Override
@@ -96,8 +106,10 @@ public class ImmutableArrayList implements ImmutableList {
         checkBounds(index);
         Object[] newUnderlyingArray = new Object[size - 1];
         System.arraycopy(underlyingArray, 0, newUnderlyingArray, 0, index);
-        System.arraycopy(underlyingArray, index + 1, newUnderlyingArray, index, size - index - 1);
-        return new ImmutableArrayList(newUnderlyingArray, size - 1, size - 1);
+        System.arraycopy(underlyingArray, index + 1,
+                newUnderlyingArray, index, size - index - 1);
+        return new ImmutableArrayList(newUnderlyingArray,
+                size - 1, size - 1);
     }
 
     @Override

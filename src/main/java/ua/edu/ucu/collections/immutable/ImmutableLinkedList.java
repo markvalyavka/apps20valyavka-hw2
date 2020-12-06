@@ -61,14 +61,15 @@ public class ImmutableLinkedList implements ImmutableList {
     @Override
     public ImmutableList addAll(int index, Object[] c) {
         if (isEmpty()) {
-            return new ImmutableLinkedList(new Object[]{c});
+            return new ImmutableLinkedList(c);
         } else {
             checkBounds(index);
             Object[] currArray = toArray();
             Object[] newArray = new Object[size + c.length];
             System.arraycopy(currArray, 0, newArray, 0, index);
             System.arraycopy(c, 0, newArray, index, c.length);
-            System.arraycopy(currArray, index, newArray, index + c.length, size - index);
+            System.arraycopy(currArray, index, newArray,
+                    index + c.length, size - index);
             return new ImmutableLinkedList(newArray);
         }
     }
@@ -86,7 +87,8 @@ public class ImmutableLinkedList implements ImmutableList {
         Object[] currArray = toArray();
         Object[] newArray = new Object[size - 1];
         System.arraycopy(currArray, 0, newArray, 0, index);
-        System.arraycopy(currArray, index + 1, newArray, index, size - index - 1);
+        System.arraycopy(currArray, index + 1, newArray,
+                index, size - index - 1);
         return new ImmutableLinkedList(newArray);
     }
 
